@@ -1,13 +1,17 @@
 package com.keyin;
 
-public class Devision {
+import java.util.Calendar;
+
+public class Division {
     private long id;
     private String name;
     private String startBirthYear;
     private String endBirthYear;
 
     public boolean isPlayerEligible(Player player){
-        player = true;
+        String playerBirthYear = String.valueOf(player.getBirthday().get(Calendar.YEAR));
+
+        return playerBirthYear.equals(startBirthYear) || playerBirthYear.equals(endBirthYear);
     }
 
     public String getEndBirthYear() {
