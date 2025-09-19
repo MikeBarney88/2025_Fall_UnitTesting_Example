@@ -9,11 +9,16 @@ public class Division {
     private String endBirthYear;
 
     public boolean isPlayerEligible(Player player){
+        Calendar playerBirthday = player.getBirthday();
+
+        if(playerBirthday != null) {
         String playerBirthYear = String.valueOf(player.getBirthday().get(Calendar.YEAR));
 
-        return playerBirthYear.equals(startBirthYear) || playerBirthYear.equals(endBirthYear);
+        return Integer.parseInt(startBirthYear) <= Integer.parseInt(playerBirthYear) &&
+                Integer.parseInt(endBirthYear) >= Integer.parseInt(playerBirthYear);
+        }
+        return false;
     }
-
     public String getEndBirthYear() {
         return endBirthYear;
     }
